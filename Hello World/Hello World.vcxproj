@@ -128,7 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="input.c" />
+    <ClCompile Include="organize.c" />
     <ClCompile Include="Source.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="organize.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -21,5 +21,13 @@
     <ClCompile Include="input.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="organize.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="organize.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
