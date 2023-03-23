@@ -9,19 +9,19 @@
 
 void printmenu(PARTICIPANT* participants, int num)									//Tournament Organization Menu
 {
-	int assignOption;
+	int Option;
 	printf("------ Tournament Organization Menu ------\n");							
 	printf("\n 1. Assign IDs randomly\n 2. Assign IDs manually\n");
 	printf("Enter a number here: \n");
-	if (scanf("%d", &assignOption) != 1) {
+	if (scanf("%d", &Option) != 1) {
 		printf("\nInvalid entry.\n");
 		exit(1);
 	}
 
-	if (assignOption == 1) {													//Swtich to Random function
+	if (Option == 1) {													//Swtich to Random function
 		random(participants, num);
 	}
-	else if (assignOption == 2) {												//Swtich to Mannual function
+	else if (Option == 2) {												//Swtich to Mannual function
 		mannual(participants, num);
 	}
 	else {																		//If A wrong choice
@@ -35,6 +35,18 @@ void printmenu(PARTICIPANT* participants, int num)									//Tournament Organiza
 	return 0;
 
 }
+
+
+void assign(PARTICIPANT* participants, int num)										//Assign to different group
+{
+	for (int i = 0; i < num; i++) {													// Calculate the number on the name
+		int num = 0;
+		for (int j = 0; j < strlen(participants[i].name); j++) {
+			num += participants[i].name[j];
+		}
+		participants[i].group_id = num % 3 + 1;										// Move it to group
+}	
+
 
 
 
