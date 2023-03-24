@@ -18,8 +18,22 @@
     <ClCompile Include="Source.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="input.c">
+    <ClCompile Include="numInput.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="nameInput.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="numInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="nameInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="participant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
