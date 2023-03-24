@@ -18,20 +18,11 @@
     <ClCompile Include="Source.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="input.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="organize.c">
-    <ClCompile Include="FileIO.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Error.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="organize.h">
-    <ClInclude Include="FileIO.h">
     <ClInclude Include="Error.h">
       <Filter>Header Files</Filter>
     </ClInclude>
