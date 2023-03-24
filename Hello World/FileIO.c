@@ -4,8 +4,10 @@
 
 // Implementations to the file saving and loading functions
 
+#include "FileIO.h"
 #include "Error.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 #define ARR_START_SIZE 2
 
@@ -40,14 +42,14 @@ PARTICIPANT* Load(char filename[]) {
 	PARTICIPANT* tempTournament;
 	if (tempTournament = (PARTICIPANT*)malloc(ARR_START_SIZE * sizeof(PARTICIPANT)))
 		Print_Exit("Error allocating memory to tournament array.");
-	
+
 	// variable to add participant to tournament
 	PARTICIPANT* p;
 	if (p = (PARTICIPANT*)malloc(sizeof(PARTICIPANT)) == NULL)
 		Print_Exit("An error ocurred while allocating memory to participant.");
 
 	for (int i = 0; fread(p, sizeof(PARTICIPANT), 1, fp) == 1; i++) {
-		tempTournament[i] = p;
+		tempTournament[i] = *p;
 	}
 
 	free(p);
