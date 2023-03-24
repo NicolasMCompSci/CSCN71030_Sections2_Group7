@@ -3,4 +3,4 @@
 #include "numInput.h"
 #include "participant.h"
 
-PARTICIPANT* assignNames(int size);
+void assignNames(PARTICIPANT* p, int size);

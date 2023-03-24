@@ -1,7 +1,7 @@
 #include "numInput.h"
 
 int sizeOfTournament() {
-	int numOfParticipants;
+	int numOfParticipants = 0;
 
 	printf("Enter Num: ");
 	if (scanf("%d", &numOfParticipants) != 1) {
@@ -18,15 +18,16 @@ int sizeOfTournament() {
 			exit(1);
 		}
 	}
+	return numOfParticipants;
 }
 
 bool willNumChange() {
 	char willUserChangeNum[MAXNAMESIZE];
-	if (scanf("%s", &willUserChangeNum) != 1) {
+	if (scanf("%s", willUserChangeNum) != 1) {
 		printf("Invalid input");
 		exit(1);
 	}
-	if (willUserChangeNum == 'yes') {
+	if (strcmp(willUserChangeNum, "yes") == 0) {
 		return true;
 	}
 	else {

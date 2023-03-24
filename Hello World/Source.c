@@ -9,7 +9,7 @@ int main(void) {
 	int tournamentSize = sizeOfTournament();
 
 	PARTICIPANT* participant = (PARTICIPANT*)malloc(sizeof(PARTICIPANT) * tournamentSize);
-	participant = assignNames(participant, tournamentSize);
+	assignNames(participant, tournamentSize);
 
 	free(participant);
 	return 0;
