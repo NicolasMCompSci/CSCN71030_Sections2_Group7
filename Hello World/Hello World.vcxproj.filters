@@ -21,6 +21,9 @@
     <ClCompile Include="numInput.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Error.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="nameInput.c">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -33,6 +36,11 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="participant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Error.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
