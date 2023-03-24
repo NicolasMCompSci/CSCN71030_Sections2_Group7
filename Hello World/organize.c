@@ -29,6 +29,7 @@ void printmenu(PARTICIPANT* participants, int num)									//Tournament Organiza
 		exit(1);
 	}
 
+	printParticipants(participants, num);
 
 	free(participants);
 	return 0;
