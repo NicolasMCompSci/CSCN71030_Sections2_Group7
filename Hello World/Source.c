@@ -1,12 +1,16 @@
-// CSCN71030 - winter 2023
-// Group Project - Tournament Bracket Generator
-// Nicolas Masquieto, Ethan Groen, Louis He
+#define _CRT_SECURE_NO_WARNINGS
 
-// This is a simple "Hello World" program as per the GitHub setup requirements
-
-#include <stdio.h>
+#include "nameInput.h"
+#include "numInput.h"
+#include "participant.h"
 
 int main(void) {
-	printf("Hello World\n");
+
+	int tournamentSize = sizeOfTournament();
+
+	PARTICIPANT* participant = (PARTICIPANT*)malloc(sizeof(PARTICIPANT) * tournamentSize);
+	assignNames(participant, tournamentSize);
+
+	free(participant);
 	return 0;
 }
