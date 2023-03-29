@@ -134,6 +134,7 @@
   <ItemGroup>
     <ClInclude Include="Display.h" />
     <ClInclude Include="Error.h" />
+    <ClInclude Include="Participant.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
