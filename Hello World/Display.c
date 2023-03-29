@@ -7,6 +7,9 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+#define LINE_NAME_SIZE MAXNAMESIZE+2
+#define INNERLINE_NAME_SIZE LINE_NAME_SIZE+2
+
 // Displays a menu of variable size according to optionCount.
 // Every new option prompt is another line.
 void PrintMenu(int optionCount, char option[], ...)
@@ -30,8 +33,45 @@ void DisplayTournament_Short(PARTICIPANT tournament[], size_t participantCount) 
 	// loops through the array, incrementing the player count by 2 every iteration
 	// as 2 players are printed at the same time.
 	for (int player = 0, round = 1; player < participantCount; player+=2, round++)
-		printf("Match %d: %s vs %s\n", round, tournament[SearchTournament(tournament, participantCount, player+1)].name, 
-				tournament[SearchTournament(tournament, participantCount, player+2)].name);
+		printf("Match %d: %s vs %s\n", round, tournament[SearchArrayIndexFromID(tournament, participantCount, player+1)].name,
+				tournament[SearchArrayIndexFromID(tournament, participantCount, player+2)].name);
+	printf("\n");
+}
+
+void DisplayTournament_Full(PARTICIPANT tournament[], size_t participantCount) {
+	switch (participantCount) {
+	case 2:
+		printf("%10s\n", tournament[SearchArrayIndexFromID(tournament, participantCount, 1)].name);
+		printf("%10s\\\n", " ");
+		printf("%10s ----------\n", " ");
+		printf("%10s/\n", " ");
+		printf("%10s\n\n", tournament[SearchArrayIndexFromID(tournament, participantCount, 2)].name);
+		break;
+	case 4:
+		printf("%10s\n", tournament[SearchArrayIndexFromID(tournament, participantCount, 1)].name);
+		printf("%10s\\\n", " ");
+		printf("%10s ----------\n", " ");
+		printf("%10s/%10s\\\n", " ", " ");
+		printf("%10s%12s\\\n", tournament[SearchArrayIndexFromID(tournament, participantCount, 2)].name, " ");
+		printf("%22s ----------\n", " ");
+		printf("%10s%12s/\n", tournament[SearchArrayIndexFromID(tournament, participantCount, 3)].name, " ");
+		printf("%10s\\%10s/\n", " ", " ");
+		printf("%10s ----------\n", " ");
+		printf("%10s/\n", " ");
+		printf("%10s\n", tournament[SearchArrayIndexFromID(tournament, participantCount, 1)].name);
+		break;
+	case 8:
+		break;
+	case 16:
+		break;
+	case 32:
+		break;
+	case 64:
+		break;
+	default:
+		printf("Incorrect bracket size. Please create your bracket again.");
+		break;
+	}
 }
 
 // Searches the tournament for the index of a participant according to their ID

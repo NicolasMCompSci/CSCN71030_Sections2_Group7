@@ -17,5 +17,6 @@ int main(void) {
 	p[2].id = 4, strcpy(p[2].name, "p2");
 	p[3].id = 3, strcpy(p[3].name, "p3");
 
-	DisplayTournament_Short(p, 4-1);
+	DisplayTournament_Short(p, 4);
+	DisplayTournament_Full(p, 4);
 }

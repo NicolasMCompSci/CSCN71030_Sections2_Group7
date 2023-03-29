@@ -12,5 +12,7 @@
 // Every new prompt is another line.
 void DisplayMenu(int, char[], ...);
 
-// Displays the tournment bracket.
+// Displays sort form of tournment bracket.
 void DisplayTournament_Short(PARTICIPANT[], size_t);
+// Displays full form tournament graph.
+void DisplayTournament_Full(PARTICIPANT[], size_t);
