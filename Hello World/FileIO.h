@@ -5,7 +5,7 @@
 // 
 // Interface to the file saving and loading functions
 
-#include "organize.h"
+#include "participant.h"
 
 // saves file. char[] is file name
 void Save(PARTICIPANT[], char[]);

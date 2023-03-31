@@ -5,7 +5,7 @@
 // 
 // Interface for display functions
 
-#include "organize.h"
+#include "participant.h"
 #include <stdio.h>
 
 // Displays a menu of variable size.
