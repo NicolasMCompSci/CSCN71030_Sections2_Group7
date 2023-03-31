@@ -7,7 +7,7 @@
 #include "organize.h"
 
 
-void printmenu(PARTICIPANT* participants, int num)									//Tournament Organization Menu
+void printmenu(PARTICIPANT* participants, int num)										//Tournament Organization Menu
 {
 	int Option;
 	printf("------ Tournament Organization Menu ------\n");							
@@ -18,13 +18,13 @@ void printmenu(PARTICIPANT* participants, int num)									//Tournament Organiza
 		exit(1);
 	}
 
-	if (Option == 1) {													//Swtich to Random function
+	if (Option == 1) {																	//Swtich to Random function
 		random(participants, num);
 	}
-	else if (Option == 2) {												//Swtich to Mannual function
+	else if (Option == 2) {																//Swtich to Mannual function
 		mannual(participants, num);
 	}
-	else {																		//If A wrong choice
+	else {																				//If A wrong choice
 		printf("\nInvalid entry.\n");
 		exit(1);
 	}
@@ -37,29 +37,30 @@ void printmenu(PARTICIPANT* participants, int num)									//Tournament Organiza
 }
 
 
-void assign(PARTICIPANT* participants, int num)										//Assign to different group
+void assign(PARTICIPANT* participants, int num)											//Assign to different group
 {
-	for (int i = 0; i < num; i++) {													// Calculate the number on the name
+	for (int i = 0; i < num; i++) {														// Calculate the number on the name
 		int num = 0;
 		for (int j = 0; j < strlen(participants[i].name); j++) {
 			num += participants[i].name[j];
 		}
-		participants[i].group_id = num % 3 + 1;										// Move it to group
+		participants[i].group_id = num % 4 + 1;											// Move it to group
+	}
 }	
 
 
 
 
-void random(PARTICIPANT* participants, int num)							//Random Function
+void random(PARTICIPANT * participants, int num)										//Random Function
 {
-	srand(time(NULL));													//Use Random number generator
+	srand(time(NULL));																	//Use Random number generator
 
 	for (int i = 0; i < num; i++) {
-		participants[i].id = rand() % 10+1;								//Use number from 1-10
+		participants[i].id = rand() % (num * 10) + 1;									//Use number from 1-10
 	}
 }
 
-void mannual(PARTICIPANT* participants, int num)										//Mannual Function
+void mannual(PARTICIPANT * participants, int num)										//Mannual Function
 {
 	int id;
 
