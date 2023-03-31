@@ -6,6 +6,16 @@
 
 #include "organize.h"
 
+void printParticipants(PARTICIPANT* participants, int num)						// Display Tournament
+{
+	printf("List of Participants:\n");
+	printf("-----------------------------------\n");
+	for (int i = 0; i < num; i++) {
+		printf("ID: %d, Name: %s, Group: %d\n", participants[i].id, participants[i].name, participants[i].group_id);
+	}
+	printf("-----------------------------------\n");
+}
+
 
 void printmenu(PARTICIPANT* participants, int num)										//Tournament Organization Menu
 {
