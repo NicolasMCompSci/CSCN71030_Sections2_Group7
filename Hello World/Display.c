@@ -7,9 +7,6 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-#define LINE_NAME_SIZE MAXNAMESIZE+2
-#define INNERLINE_NAME_SIZE LINE_NAME_SIZE+2
-
 // Displays a menu of variable size according to optionCount.
 // Every new option prompt is another line.
 void DisplayMenu(int optionCount, char option[], ...)
