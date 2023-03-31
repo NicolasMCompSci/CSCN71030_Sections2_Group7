@@ -1,11 +1,10 @@
 #pragma once
 
 
-#define MAXNAME 10
+#define MAXNAMESIZE 10
 
-typedef struct participant
-{
-	char name[MAXNAME];
+typedef struct participant {
+	char name[MAXNAMESIZE];
 	int id;
 	int group_id;
 }PARTICIPANT;

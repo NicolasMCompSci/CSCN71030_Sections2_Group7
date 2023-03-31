@@ -129,7 +129,6 @@
   <ItemGroup>
     <ClCompile Include="nameInput.c" />
     <ClCompile Include="numInput.c" />
-    <ClCompile Include="input.c" />
     <ClCompile Include="organize.c" />
     <ClCompile Include="Display.c" />
     <ClCompile Include="Error.c" />

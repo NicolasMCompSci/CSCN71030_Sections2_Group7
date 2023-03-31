@@ -7,7 +7,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-#include "participant.h"
+#include "organize.h"
 
 int sizeOfTournament();
 

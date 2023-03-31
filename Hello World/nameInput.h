@@ -1,6 +1,6 @@
 #pragma once
 
 #include "numInput.h"
-#include "participant.h"
+#include "organize.h"
 
 void assignNames(PARTICIPANT* p, int size);

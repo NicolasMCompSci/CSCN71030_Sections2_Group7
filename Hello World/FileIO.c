@@ -4,6 +4,7 @@
 
 // Implementations to the file saving and loading functions
 
+#define _CRT_SECURE_NO_WARNINGS
 #include "FileIO.h"
 #include "Error.h"
 #include <stdio.h>

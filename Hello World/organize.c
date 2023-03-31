@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -45,6 +46,7 @@ void assign(PARTICIPANT* participants, int num)										//Assign to different g
 			num += participants[i].name[j];
 		}
 		participants[i].group_id = num % 3 + 1;										// Move it to group
+	}
 }	
 
 
