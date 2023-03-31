@@ -128,22 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Display.c" />
-    <ClCompile Include="nameInput.c" />
-    <ClCompile Include="numInput.c" />
-    <ClCompile Include="input.c" />
-    <ClCompile Include="organize.c" />
     <ClCompile Include="Error.c" />
-    <ClCompile Include="FileIO.c" />
     <ClCompile Include="Source.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Display.h" />
-    <ClInclude Include="nameInput.h" />
-    <ClInclude Include="numInput.h" />
     <ClInclude Include="participant.h" />
-    <ClInclude Include="organize.h" />
     <ClInclude Include="Error.h" />
-    <ClInclude Include="FileIO.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

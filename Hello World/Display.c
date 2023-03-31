@@ -12,7 +12,7 @@
 
 // Displays a menu of variable size according to optionCount.
 // Every new option prompt is another line.
-void PrintMenu(int optionCount, char option[], ...)
+void DisplayMenu(int optionCount, char option[], ...)
 {
 	va_list valist;
 	// allocate memory and inilialize list

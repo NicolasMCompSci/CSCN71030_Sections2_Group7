@@ -5,9 +5,9 @@
 // This is a simple "Hello World" program as per the GitHub setup requirements
 
 #define _CRT_SECURE_NO_WARNINGS
-#include "Participant.h"
-#include"Display.h"
-#include<string.h>
+#include "participant.h"
+#include "Display.h"
+#include <string.h>
 #include <stdio.h>
 
 int main(void) {
