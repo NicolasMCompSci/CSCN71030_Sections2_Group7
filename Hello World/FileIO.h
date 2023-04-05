@@ -6,8 +6,11 @@
 // Interface to the file saving and loading functions
 
 #include "participant.h"
+#include <stdbool.h>
 
-// saves file. char[] is file name
-void Save(PARTICIPANT[], char[]);
-// loads file with char[] name
-PARTICIPANT* Load(char[]);
+// saves participant array file
+bool Save(PARTICIPANT*, int, char[]);
+// loads participant array save file
+bool Load(PARTICIPANT*, int*, char[]);
+// checks if filename is valid
+bool IsValidFileName(char[]);
