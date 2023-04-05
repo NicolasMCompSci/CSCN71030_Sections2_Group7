@@ -31,11 +31,11 @@ bool Save(PARTICIPANT *tournament, int participantCount, char filename[]) {
 	for (int i = 0; i < participantCount; i++)
 		fwrite(&tournament[i], sizeof(PARTICIPANT), 1, fp);
 
-	// Give user feedback when successful save happens.	
-	printf("Save success.\n");
 	// Close file as it is no longer being used.
 	fclose(fp);
 
+	// returns true on a successful save
+	return true;
 }
 
 // loads file with char[] name, pass an integer to get the tournament size
@@ -84,7 +84,6 @@ bool Load(PARTICIPANT* savedTournament, int *tournamentSize, char filename[]) {
 	free(p);
 	fclose(fp);
 
-	printf("Load success.\n");
 	// returns true if load was successful
 	return true;
 }
