@@ -55,7 +55,6 @@ bool Load(PARTICIPANT* savedTournament, int *tournamentSize, char filename[]) {
 	*tournamentSize = ARR_START_SIZE;
 	if (!(savedTournament = (PARTICIPANT*)malloc(*tournamentSize * sizeof(PARTICIPANT))))
 		return false;
-	strcpy(savedTournament, "");
 	
 	// allocate memory to temporarily store incoming participants
 	PARTICIPANT* p;
@@ -66,15 +65,13 @@ bool Load(PARTICIPANT* savedTournament, int *tournamentSize, char filename[]) {
 	for (int i = 0; fread(p, sizeof(PARTICIPANT), 1, fp) == 1; i++) {
 		// resizes and copies the tournament if the current size is too small;
 		if (i > *tournamentSize) {
-			PARTICIPANT* tempTournament = savedTournament;
-			int oldSize = *tournamentSize;
 			*tournamentSize *= 2;
-			savedTournament = (PARTICIPANT*)realloc(savedTournament, sizeof(PARTICIPANT) * *tournamentSize);
-			if (!savedTournament)
+			PARTICIPANT* tempTournament = (PARTICIPANT*)realloc(savedTournament, sizeof(PARTICIPANT) * *tournamentSize);
+			if (!tempTournament) {
+				printf("memory allocation failed.\n");
 				return false;
-			for (int j = 0; j < oldSize; j++)
-				savedTournament[j] = tempTournament[j];
-			free(tempTournament);
+			}
+			savedTournament = tempTournament;
 		}
 		// populates tournament with participant data being loaded
 		savedTournament[i] = *p;
