@@ -14,8 +14,8 @@ int main(int argc, char* argv[]) {
 	PARTICIPANT* tournament = NULL;
 	int tempInt = 0;
 	int tournamentSize = 0;
-	if (argc > 2)
-		if (!Load(tournament, &tournamentSize, argv[0]))
+	if (argc >= 2)
+		if (!Load(&tournament, &tournamentSize, argv[1]))
 			printf("Failed to load file from command line.\n");
 		else
 			printf("File loaded from command line argument.\n");
