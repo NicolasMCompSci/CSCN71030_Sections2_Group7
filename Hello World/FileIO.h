@@ -8,6 +8,8 @@
 #include "participant.h"
 #include <stdbool.h>
 
+#define MAX_FILE_NAME 200
+
 // saves participant array file
 bool Save(PARTICIPANT*, int, char[]);
 // loads participant array save file

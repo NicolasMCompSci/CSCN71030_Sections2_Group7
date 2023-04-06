@@ -9,8 +9,6 @@
 #include "Display.h"
 #include <stdbool.h>
 
-#define MAX_FILE_NAME 200
-
 int main(int argc, char* argv[]) {
 
 	PARTICIPANT* tournament = NULL;

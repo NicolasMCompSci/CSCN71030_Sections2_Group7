@@ -18,10 +18,8 @@
 // returns false if a problem occured while saving
 bool Save(PARTICIPANT *tournament, int participantCount, char filename[]) {
 	// checks if filename is valid
-	if (!IsValidFileName(filename)) {
-		printf("Invalid file name. Do not use special characters such as #, %, &, or blank spaces.\n");
+	if (!IsValidFileName(filename))
 		return false;
-	}
 
 	// Declare file pointer and use filename to open the file where data
 	// will be saved.	If unable to open file send an error message and exit.
@@ -46,10 +44,8 @@ bool Save(PARTICIPANT *tournament, int participantCount, char filename[]) {
 // returns false if file failed to load
 bool Load(PARTICIPANT* savedTournament, int *tournamentSize, char filename[]) {
 	// checks if file name is valid
-	if (!IsValidFileName(filename)) {
-		printf("Invalid file name. Do not use special characters such as #, %, &, or blank spaces.\n");
+	if (!IsValidFileName(filename))
 		return false;
-	}
 
 	// opens file pointer with filename
 	// checks if it has been successfully opened
@@ -101,14 +97,21 @@ bool Load(PARTICIPANT* savedTournament, int *tournamentSize, char filename[]) {
 // checks if filename is valid for saving
 // returns false if it is not
 bool IsValidFileName(char filename[]) {
+	if (strlen(filename) > MAX_FILE_NAME) {
+		printf("That file name is too large. Please keep it under %d", MAX_FILE_NAME);
+		return false;
+	}
+
 	// array of invalid file characters
 	char illegalCharacters[] = { '#', '%', '&', '{', '}', '\\', '<', '>', '*', '?', '/', ' ',
 								'$', '!', '\'', '\"', ':', '@', '+', '`', '|', '=', '\0'};
 	// loops through file name checking if each character is valid or not
 	for (int i = 0; i < strlen(filename); i++) {
 		for (int j = 0; j < strlen(illegalCharacters); j++)
-			if (filename[i] == illegalCharacters[j])
+			if (filename[i] == illegalCharacters[j]) {
+				printf("Invalid file name. Do not use special characters such as #, %, &, or blank spaces.\n");
 				return false;
+			}
 	}
 
 	return true;
