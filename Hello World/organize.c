@@ -47,7 +47,7 @@ void OrganizeMenu(PARTICIPANT* participants, int num)										//Tournament Orga
 	printParticipants(participants, num);
 }
 
-// 
+// archived, since it is no longer used.
 //void assign(PARTICIPANT* participants, int num)											//Assign to different group
 //{
 //	for (int i = 0; i < num; i++) {														// Calculate the number on the name

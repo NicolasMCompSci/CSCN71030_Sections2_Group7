@@ -24,7 +24,8 @@ int main(int argc, char* argv[]) {
 	while(continueProgram) {
 
 		// Displays option menu to user
-		DisplayMenu(8, "\nWhat do you want to do?\n",
+		DisplayMenu(8, "\n-----------------------------"
+						"\nWhat do you want to do ? \n",
 						"1. New Tournament",
 						"2. Edit current Tournament",
 						"3. Display compact bracket",
@@ -35,6 +36,7 @@ int main(int argc, char* argv[]) {
 
 		// get menu input and initialize filename string
 		int menuInput = getWholeNumAsInt();
+		printf("\n");
 		char* fileName = NULL;
 		// menu logic
 		switch (menuInput) {
