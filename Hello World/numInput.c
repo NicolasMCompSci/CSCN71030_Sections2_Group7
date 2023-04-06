@@ -9,7 +9,7 @@
 
 int integerInput() {
 	int numOfParticipants = 0;
-	printf("Enter Num: ");
+	printf("Enter the size of the tournament: ");
 	if (scanf("%d", &numOfParticipants) != 1) {
 		printf("\nInlavid Entry");
 		exit(1);
