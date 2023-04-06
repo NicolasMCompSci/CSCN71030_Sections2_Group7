@@ -18,14 +18,18 @@
 // returns false if a problem occured while saving
 bool Save(PARTICIPANT *tournament, int participantCount, char filename[]) {
 	// checks if filename is valid
-	if (!IsValidFileName(filename))
+	if (!IsValidFileName(filename)) {
+		printf("Invalid file name. Do not use special characters such as #, %, &, or blank spaces.\n");
 		return false;
+	}
 
 	// Declare file pointer and use filename to open the file where data
 	// will be saved.	If unable to open file send an error message and exit.
 	FILE* fp;
-	if (!(fp = fopen(filename, "wb")))
+	if (!(fp = fopen(filename, "wb"))) {
+		printf("failed to open file %s.\n", filename);
 		return false;
+	}
 
 	// Save tournament participants to file sequentially.
 	for (int i = 0; i < participantCount; i++)
@@ -42,24 +46,32 @@ bool Save(PARTICIPANT *tournament, int participantCount, char filename[]) {
 // returns false if file failed to load
 bool Load(PARTICIPANT* savedTournament, int *tournamentSize, char filename[]) {
 	// checks if file name is valid
-	if (!IsValidFileName(filename))
+	if (!IsValidFileName(filename)) {
+		printf("Invalid file name. Do not use special characters such as #, %, &, or blank spaces.\n");
 		return false;
+	}
 
 	// opens file pointer with filename
 	// checks if it has been successfully opened
 	FILE* fp;
-	if (!(fp = fopen(filename, "rb")))
+	if (!(fp = fopen(filename, "rb"))) {
+		printf("failed to open file %s.\n", filename);
 		return false;
+	}
 
 	// allocate memory for tournament being loaded
 	*tournamentSize = ARR_START_SIZE;
-	if (!(savedTournament = (PARTICIPANT*)malloc(*tournamentSize * sizeof(PARTICIPANT))))
+	if (!(savedTournament = (PARTICIPANT*)malloc(*tournamentSize * sizeof(PARTICIPANT)))) {
+		printf("memory allocation failed.\n");
 		return false;
+	}
 	
 	// allocate memory to temporarily store incoming participants
 	PARTICIPANT* p;
-	if (!(p = (PARTICIPANT*)malloc(sizeof(PARTICIPANT))))
+	if (!(p = (PARTICIPANT*)malloc(sizeof(PARTICIPANT)))) {
+		printf("memory allocation failed.\n");
 		return false;
+	}
 
 	// reads saved file until there is nothing left to read
 	for (int i = 0; fread(p, sizeof(PARTICIPANT), 1, fp) == 1; i++) {

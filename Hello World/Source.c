@@ -96,9 +96,7 @@ int main(int argc, char* argv[]) {
 			// saves tournament to file.
 			// Also checks if save was successful, if not then print error message
 			if (!Save(tournament, tournamentSize, fileName))
-				printf("Saving failed.\n File name invalid or allocation error.\n Check if your drive has enough space left.\n"
-					"Also remember to not use any of the following characters for the file name:\n #, %, &, {, }, \\,"
-					"<, >, *, ?, /, ' ', $, !, \', \", :, @, +, `, |, or =\n");
+				printf("An error occurred. Try again.\n");
 			else
 				printf("Your file has been saved successfully.\n");
 			break;
@@ -116,9 +114,7 @@ int main(int argc, char* argv[]) {
 			// loads tournament and tournament size from file
 			// also prints error message on allocation error or not finding file
 			if (!Load(tournament, &tournamentSize, fileName))
-				printf("Load failed.\n File name invalid or allocation error.\n Check if your drive has enough space left.\n"
-					"Also remember to not use any of the following characters for the file name:\n #, %, &, {, }, \\,"
-					"<, >, *, ?, /, ' ', $, !, \', \", :, @, +, `, |, or =\n");
+				printf("An error occurred. Try again.\n");
 			else
 				printf("Your file has been loaded successfully.\n");
 			break;
