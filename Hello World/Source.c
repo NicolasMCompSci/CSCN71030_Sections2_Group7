@@ -12,6 +12,7 @@
 int main(int argc, char* argv[]) {
 
 	PARTICIPANT* tournament = NULL;
+	int tempInt = 0;
 	int tournamentSize = 0;
 	if (argc > 2)
 		if (!Load(tournament, &tournamentSize, argv[0]))
@@ -43,7 +44,15 @@ int main(int argc, char* argv[]) {
 			// --------------
 			
 			// get new tournament size
-			tournamentSize = sizeOfTournament();
+			tempInt = integerInput();
+			if ((tempInt != 0) && ((tempInt & (tempInt - 1)) == 0)) {
+				tournamentSize = tempInt;
+			}
+			else {
+				printf("\nThe tournament size that you entered is invalid would you like to switch to the closest (but higher) value (yes or no) \n");
+				bool choice = willNumChange();
+				tournamentSize - sizeOfTournament(tempInt, choice);
+			}
 			// if already allocated, clear allocation for new tournament
 			if (tournament)
 				free(tournament);

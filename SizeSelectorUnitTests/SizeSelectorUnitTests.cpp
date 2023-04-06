@@ -1,4 +1,5 @@
 #include "pch.h"
+#include <stdbool.h>
 #include "CppUnitTest.h"
 
 extern "C" {
@@ -13,8 +14,17 @@ namespace SizeSelectorUnitTests
 	{
 	public:
 		
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(SIZE_TEST_1)
 		{
+			int size = sizeOfTournament(5, true);
+			int expectedSize = 8;
+			Assert::AreEqual(size, expectedSize);
+		}
+		TEST_METHOD(SIZE_TEST_3) 
+		{
+			int size = sizeOfTournament(68, true);
+			int expectedSize = 64;
+			Assert::AreEqual(size, expectedSize);
 		}
 	};
 }
