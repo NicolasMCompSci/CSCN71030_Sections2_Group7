@@ -27,7 +27,7 @@ int main(int argc, char* argv[]) {
 		DisplayMenu(8, "\n-----------------------------"
 						"\nWhat do you want to do ? \n",
 						"1. New Tournament",
-						"2. Edit current Tournament",
+						"2. Adjust tournament seeding",
 						"3. Display compact bracket",
 						"4. Display graph form bracket",
 						"5. Save",
