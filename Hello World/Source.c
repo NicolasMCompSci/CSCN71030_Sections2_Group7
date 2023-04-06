@@ -59,9 +59,12 @@ int main(int argc, char* argv[]) {
 			assignNames(tournament, tournamentSize);
 			break;
 		case 2:
+			// ------------
+			// ORGANIZATION
+			// ------------
 
-			// add organize functionality here
-
+			// calls organization submenu
+			OrganizeMenu(tournament, tournamentSize);
 			break;
 		case 3:
 			// ---------------
@@ -123,6 +126,8 @@ int main(int argc, char* argv[]) {
 			// ----
 			// QUIT
 			// ----
+
+			// breaks out of while loop and ends program
 			continueProgram = false;
 			break;
 		default:

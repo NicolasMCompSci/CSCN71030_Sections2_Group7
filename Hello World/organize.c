@@ -3,50 +3,49 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdbool.h>
 
 
 #include "organize.h"
+#include "GenericInput.h"
 
-// This code won't be used, so it is being archived
-//void printParticipants(PARTICIPANT* participants, int num)						// Display Tournament
-//{
-//	printf("List of Participants:\n");
-//	printf("-----------------------------------\n");
-//	for (int i = 0; i < num; i++) {
-//		printf("ID: %d, Name: %s, Group: %d\n", participants[i].id, participants[i].name, participants[i].group_id);
-//	}
-//	printf("-----------------------------------\n");
-//}
-//
-//
-//void printmenu(PARTICIPANT* participants, int num)										//Tournament Organization Menu
-//{
-//	int Option;
-//	printf("------ Tournament Organization Menu ------\n");							
-//	printf("\n 1. Assign IDs randomly\n 2. Assign IDs manually\n");
-//	printf("Enter a number here: \n");
-//	if (scanf("%d", &Option) != 1) {
-//		printf("\nInvalid entry.\n");
-//		exit(1);
-//	}
-//
-//	if (Option == 1) {																	//Swtich to Random function
-//		random(participants, num);
-//	}
-//	else if (Option == 2) {																//Swtich to Mannual function
-//		mannual(participants, num);
-//	}
-//	else {																				//If A wrong choice
-//		printf("\nInvalid entry.\n");
-//		exit(1);
-//	}
-//
-//	printParticipants(participants, num);
-//
-//	free(participants);
-//	return 0;
-//
-//}
+
+void printParticipants(PARTICIPANT* participants, int num)						// Display Tournament
+{
+	printf("List of Participants:\n");
+	printf("-----------------------------------\n");
+	for (int i = 0; i < num; i++) {
+		printf("ID: %d, Name: %s, Group: %d\n", participants[i].id, participants[i].name, participants[i].group_id);
+	}
+	printf("-----------------------------------\n");
+}
+
+
+void OrganizeMenu(PARTICIPANT* participants, int num)										//Tournament Organization Menu
+{
+	printf("------ Tournament Organization Sub-Menu ------\n");							
+	printf("\n 1. Assign IDs randomly\n 2. Assign IDs manually\n 0. Quit\n");
+	printf("Enter a number here: \n");
+	int Option = getWholeNumAsInt();
+
+	bool continueInMenu = true;
+	while (continueInMenu) {
+		if (Option == 1) {																	//Swtich to Random function
+			random(participants, num);
+			continueInMenu = false;
+		}
+		else if (Option == 2) {																//Swtich to Mannual function
+			mannual(participants, num);
+			continueInMenu = false;
+		}
+		else if (Option == 0)
+			return;
+		else																				//If A wrong choice
+			printf("\nInvalid entry.\n");
+	}
+
+	printParticipants(participants, num);
+}
 
 void assign(PARTICIPANT* participants, int num)											//Assign to different group
 {
