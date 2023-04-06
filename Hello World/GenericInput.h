@@ -6,6 +6,8 @@
 // Interface for some generic input functions
 
 // return integer user input
-int getInt();
+int getWholeNumAsInt();
+// helper function that clears stdin
+void ClearSTDIn();
 // returns a string user input
 char* getString();

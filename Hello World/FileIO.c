@@ -55,6 +55,7 @@ bool Load(PARTICIPANT* savedTournament, int *tournamentSize, char filename[]) {
 	*tournamentSize = ARR_START_SIZE;
 	if (!(savedTournament = (PARTICIPANT*)malloc(*tournamentSize * sizeof(PARTICIPANT))))
 		return false;
+	strcpy(savedTournament, "");
 	
 	// allocate memory to temporarily store incoming participants
 	PARTICIPANT* p;
