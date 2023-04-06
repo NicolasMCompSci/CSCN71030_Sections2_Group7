@@ -9,6 +9,8 @@
 
 #include "participant.h"
 
-int sizeOfTournament();
+int integerInput();
+
+int sizeOfTournament(int size, bool choice);
 
 bool willNumChange();
