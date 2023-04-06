@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GenericInput.c" />
     <ClCompile Include="nameInput.c" />
     <ClCompile Include="numInput.c" />
     <ClCompile Include="organize.c" />
@@ -136,6 +137,7 @@
     <ClCompile Include="Source.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GenericInput.h" />
     <ClInclude Include="nameInput.h" />
     <ClInclude Include="numInput.h" />
     <ClInclude Include="participant.h" />

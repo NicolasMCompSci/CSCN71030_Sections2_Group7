@@ -1,11 +1,12 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "participant.h"
-#include "nameInput.h"
-#include "numInput.h"
 #include "FileIO.h"
-#include "Display.h"
+#include "GenericInput.h"
+#include "numInput.h"
+#include "nameInput.h"
 #include "organize.h"
+#include "Display.h"
 #include <stdbool.h>
 
 #define MAX_FILE_NAME 200
@@ -24,7 +25,7 @@ int main(int argc, char* argv[]) {
 	while(continueProgram) {
 
 		// Displays option menu to user
-		DisplayMenu(7, "\nWhat do you want to do?\n",
+		DisplayMenu(8, "\nWhat do you want to do?\n",
 						"1. New Tournament",
 						"2. Edit current Tournament",
 						"3. Display compact bracket",
@@ -34,8 +35,8 @@ int main(int argc, char* argv[]) {
 						"0. Quit");
 
 		// get menu input and initialize filename string
-		int menuInput = getInt();
-		char fileName[MAX_FILE_NAME];
+		int menuInput = getWholeNumAsInt();
+		char* fileName = NULL;
 		// menu logic
 		switch (menuInput) {
 		case 1:
@@ -85,6 +86,8 @@ int main(int argc, char* argv[]) {
 			
 			// asks user for name of file being saved
 			printf("Input a name for the file being saved: ");
+			// gets name input from user
+			fileName = getString();
 			// updates filename with user input
 			strcpy(fileName, getString());
 			// saves tournament to file.
@@ -100,8 +103,11 @@ int main(int argc, char* argv[]) {
 			// ----
 			// LOAD
 			// ----
+
 			// asks user for name of file being loaded
 			printf("Input a name for the file being loaded: ");
+			// gets name input from user
+			fileName = getString();
 			// updates filename with user input
 			strcpy(fileName, getString());
 			// loads tournament and tournament size from file
