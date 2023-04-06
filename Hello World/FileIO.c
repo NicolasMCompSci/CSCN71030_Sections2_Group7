@@ -11,7 +11,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define ARR_START_SIZE 2
+// the maximum size for a tournament
+// is used to allocate memory when loading
+#define ARR_START_SIZE 64
 
 // Saves tournament of participants to file.
 // must pass the size as an int and the file name as a string
@@ -42,7 +44,7 @@ bool Save(PARTICIPANT *tournament, int participantCount, char filename[]) {
 
 // loads file with char[] name, pass an integer to get the tournament size
 // returns false if file failed to load
-bool Load(PARTICIPANT* savedTournament, int *tournamentSize, char filename[]) {
+bool Load(PARTICIPANT** savedTournament, int *tournamentSize, char filename[]) {
 	// checks if file name is valid
 	if (!IsValidFileName(filename))
 		return false;
@@ -57,7 +59,7 @@ bool Load(PARTICIPANT* savedTournament, int *tournamentSize, char filename[]) {
 
 	// allocate memory for tournament being loaded
 	*tournamentSize = ARR_START_SIZE;
-	if (!(savedTournament = (PARTICIPANT*)malloc(*tournamentSize * sizeof(PARTICIPANT)))) {
+	if (!(*savedTournament = (PARTICIPANT*)malloc(*tournamentSize * sizeof(PARTICIPANT)))) {
 		printf("memory allocation failed.\n");
 		return false;
 	}
@@ -70,19 +72,19 @@ bool Load(PARTICIPANT* savedTournament, int *tournamentSize, char filename[]) {
 	}
 
 	// reads saved file until there is nothing left to read
-	for (int i = 0; fread(p, sizeof(PARTICIPANT), 1, fp) == 1; i++) {
-		// resizes and copies the tournament if the current size is too small;
-		if (i > *tournamentSize) {
-			*tournamentSize *= 2;
-			PARTICIPANT* tempTournament = (PARTICIPANT*)realloc(savedTournament, sizeof(PARTICIPANT) * *tournamentSize);
-			if (!tempTournament) {
-				printf("memory allocation failed.\n");
-				return false;
-			}
-			savedTournament = tempTournament;
-		}
+	for ((*tournamentSize) = 0; fread(p, sizeof(PARTICIPANT), 1, fp) == 1; (*tournamentSize)++)
 		// populates tournament with participant data being loaded
-		savedTournament[i] = *p;
+		(*savedTournament)[*tournamentSize] = *p;
+
+	// resizes the tournament in the scenario where it's
+	// smaller than the largest size
+	if (*tournamentSize < ARR_START_SIZE) {
+		PARTICIPANT* tempTournament = (PARTICIPANT*)realloc((*savedTournament), sizeof(PARTICIPANT) * (*tournamentSize));
+		if (!tempTournament) {
+			printf("memory allocation failed.\n");
+			return false;
+		}
+		(*savedTournament) = tempTournament;
 	}
 
 	// frees temporary participant

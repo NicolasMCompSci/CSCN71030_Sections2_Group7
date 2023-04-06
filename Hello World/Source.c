@@ -111,7 +111,7 @@ int main(int argc, char* argv[]) {
 			strcpy(fileName, getString());
 			// loads tournament and tournament size from file
 			// also prints error message on allocation error or not finding file
-			if (!Load(tournament, &tournamentSize, fileName))
+			if (!Load(&tournament, &tournamentSize, fileName))
 				printf("An error occurred. Try again.\n");
 			else
 				printf("Your file has been loaded successfully.\n");
