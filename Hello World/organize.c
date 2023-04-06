@@ -13,11 +13,11 @@
 void printParticipants(PARTICIPANT* participants, int num)						// Display Tournament
 {
 	printf("List of Participants:\n");
-	printf("-----------------------------------\n");
+	printf("----------------\n");
 	for (int i = 0; i < num; i++) {
-		printf("ID: %d, Name: %s, Group: %d\n", participants[i].id, participants[i].name, participants[i].group_id);
+		printf("ID: %d, Name: %s\n", participants[i].id, participants[i].name);
 	}
-	printf("-----------------------------------\n");
+	printf("----------------\n");
 }
 
 
@@ -47,16 +47,17 @@ void OrganizeMenu(PARTICIPANT* participants, int num)										//Tournament Orga
 	printParticipants(participants, num);
 }
 
-void assign(PARTICIPANT* participants, int num)											//Assign to different group
-{
-	for (int i = 0; i < num; i++) {														// Calculate the number on the name
-		int num = 0;
-		for (int j = 0; j < strlen(participants[i].name); j++) {
-			num += participants[i].name[j];
-		}
-		participants[i].group_id = num % 4 + 1;											// Move it to group
-	}
-}	
+// 
+//void assign(PARTICIPANT* participants, int num)											//Assign to different group
+//{
+//	for (int i = 0; i < num; i++) {														// Calculate the number on the name
+//		int num = 0;
+//		for (int j = 0; j < strlen(participants[i].name); j++) {
+//			num += participants[i].name[j];
+//		}
+//		participants[i].group_id = num % 4 + 1;											// Move it to group
+//	}
+//}	
 
 void random(PARTICIPANT * participants, int num)										//Random Function
 {

@@ -64,9 +64,6 @@ int main(int argc, char* argv[]) {
 			}
 			// assign names to tournament
 			assignNames(tournament, tournamentSize);
-			for (int i = 0; i < tournamentSize; i++) {
-				printf("\n%s", tournament[i].name);
-			}
 			break;
 		case 2:
 			// ------------
