@@ -14,82 +14,56 @@ namespace OrganizeUnitTests
     TEST_CLASS(OrganizeUnitTests)
     {
     public:
+
 		TEST_METHOD(TestRandomFunctionWithDifferentNum)
 		{
-			PARTICIPANT participants[5] = { {0, "Tom"}, {0, "Jerry"}, {0, "Mike"}, {0, "Mary"}, {0, "Lucy"} };
-			int num1 = 5;
-			int num2 = 10;
+			const int NUM_PARTICIPANTS = 10;
 
-			random(participants, num1);
-			int sum1 = 0;
-			for (int i = 0; i < num1; i++) 
-			{
-				sum1 += participants[i].id;
+			PARTICIPANT participants[NUM_PARTICIPANTS];
+			random(participants, NUM_PARTICIPANTS);
+
+			// Check that each participant has a unique id
+			for (int i = 0; i < NUM_PARTICIPANTS; i++) {
+				for (int j = i + 1; j < NUM_PARTICIPANTS; j++) {
+					Assert::AreNotEqual(participants[i].id, participants[j].id);
+				}
 			}
 
-			random(participants, num2);
-			int sum2 = 0;
-			for (int i = 0; i < num2; i++) 
-			{
-				sum2 += participants[i].id;
+			// Check that each id is within the range of 1 to 10 times the number of participants
+			for (int i = 0; i < NUM_PARTICIPANTS; i++) {
+				Assert::IsTrue(participants[i].id >= 1 && participants[i].id <= NUM_PARTICIPANTS * 10);
 			}
-
-			Assert::AreNotEqual(sum1, sum2);
 		}
 
-		TEST_METHOD(TestRandomFunctionWithSameNum)
+		TEST_METHOD(TestManualFunction_SingleParticipant)
+		{
+			PARTICIPANT participants[1];
+			int num = 1;
+
+			// Act
+			mannual(participants, num);
+
+			// Assert
+			Assert::AreNotEqual(participants[0].id, 0);
+		}
+
+		TEST_METHOD(TestManualFunction_MultipleParticipants)
 		{
 			// Arrange
-			PARTICIPANT participants[3] = { {0, "Tom"}, {0, "Jerry"}, {0, "Mike"} };
+			PARTICIPANT participants[3];
 			int num = 3;
 
 			// Act
-			random(participants, num);
-			int sum1 = 0;
-			for (int i = 0; i < num; i++) 
-			{
-				sum1 += participants[i].id;
-			}
-
-			random(participants, num);
-			int sum2 = 0;
-			for (int i = 0; i < num; i++) 
-			{
-				sum2 += participants[i].id;
-			}
+			mannual(participants, num);
 
 			// Assert
-			Assert::AreNotEqual(sum1, sum2);
+			Assert::AreNotEqual(participants[0].id, 0);
+			Assert::AreNotEqual(participants[1].id, 0);
+			Assert::AreNotEqual(participants[2].id, 0);
+			Assert::AreNotEqual(participants[0].id, participants[1].id);
+			Assert::AreNotEqual(participants[0].id, participants[2].id);
+			Assert::AreNotEqual(participants[1].id, participants[2].id);
 		}
 
-		TEST_METHOD(TestMannualValidInput)
-		{
-			PARTICIPANT participants[] = { {1, "Alice", 0}, {2, "Bob", 0}, {3, "Charlie", 0} };
-			const int num = 3;
-
-			mannual(participants, num);
-
-			// Assert that each participant has been assigned a valid ID
-			for (int i = 0; i < num; i++) 
-			{
-				Assert::IsTrue(participants[i].id > 0);
-			}
-		}
-
-		TEST_METHOD(TestMannualInvalidInput)
-		{
-			PARTICIPANT participants[] = { {1, "Alice", 0}, {2, "Bob", 0}, {3, "Charlie", 0} };
-			const int num = 3;
-
-			// Simulate user input of invalid number
-			char input[] = "invalid\n";
-			int ret = scanf_s(input, "%d", &participants[0].id);
-			mannual(participants, num);
-
-			for (int i = 0; i < num; i++) {
-				Assert::IsTrue(participants[i].id > 0);
-			}
-		}
-	};
-
+    };
 }
