@@ -60,26 +60,34 @@ void random(PARTICIPANT * participants, int num)										//Random Function
 	}
 }
 
-void mannual(PARTICIPANT * participants, int num)										//Mannual Function
+
+void mannual(PARTICIPANT* participants, int num)
 {
+	int* assigned_ids = calloc(num, sizeof(int));
 	int id;
+	int input_count;
 
 	for (int i = 0; i < num; i++) {
-		printf("\nEnter Number for name %s: ", participants[i].name);					//Ask number for a name
-		if (scanf("%d", &id) != 1) {
-			printf("\nInvalid entry, try again");										//if Wrong number 
-			i--;
-			continue;
+		printf("\nEnter Number for name %s: ", participants[i].name);
+		input_count = scanf("%d", &id);
+		while (input_count != 1) {
+			printf("\nInvalid entry, try again");
+			while (getchar() != '\n');  // clear input buffer
+			input_count = scanf("%d", &id);
 		}
-		for (int j = 0; j < i; j++) {													//If this number already assigned for a name
-			if (participants[j].id == id) {
+		bool id_assigned = false;
+		for (int j = 0; j < i; j++) {
+			if (assigned_ids[j] == id) {
 				printf("\nNumber already assigned to another name, try again");
 				i--;
-				continue;
+				id_assigned = true;
+				break;
 			}
 		}
-		participants[i].id = id;
+		if (!id_assigned) {
+			participants[i].id = id;
+			assigned_ids[i] = id;
+		}
 	}
-
+	free(assigned_ids);
 }
-
