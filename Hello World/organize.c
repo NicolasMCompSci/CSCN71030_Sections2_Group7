@@ -61,33 +61,79 @@ void random(PARTICIPANT * participants, int num)										//Random Function
 }
 
 
-void mannual(PARTICIPANT* participants, int num)
-{
-	int* assigned_ids = calloc(num, sizeof(int));
-	int id;
-	int input_count;
 
+
+
+void mannual(PARTICIPANT* participants, int num) {
 	for (int i = 0; i < num; i++) {
-		printf("\nEnter Number for name %s: ", participants[i].name);
-		input_count = scanf("%d", &id);
-		while (input_count != 1) {
-			printf("\nInvalid entry, try again");
-			while (getchar() != '\n');  // clear input buffer
-			input_count = scanf("%d", &id);
+		printf("Enter number for participant %s: ", participants[i].name);
+		int number;
+		scanf("%d", &number);
+
+		if (number <= 0) {
+			printf("Error: Invalid number entered.\n");
+			i--;
+			continue;
 		}
-		bool id_assigned = false;
-		for (int j = 0; j < i; j++) {
-			if (assigned_ids[j] == id) {
-				printf("\nNumber already assigned to another name, try again");
-				i--;
-				id_assigned = true;
+
+		int number_used = 0;
+		int name_used = 0;
+		for (int j = 0; j < num; j++) {
+			if (j == i) continue;
+			if (participants[j].id == number) {
+				number_used = 1;
+				break;
+			}
+			if (strcmp(participants[j].name, participants[i].name) == 0) {
+				name_used = 1;
 				break;
 			}
 		}
-		if (!id_assigned) {
-			participants[i].id = id;
-			assigned_ids[i] = id;
+		if (number_used) {
+			printf("Error: Number already used.\n");
+			i--;
+		}
+		else if (name_used) {
+			printf("Error: Name already used.\n");
+			i--;
+		}
+		else {
+			participants[i].id = number;
 		}
 	}
-	free(assigned_ids);
+}
+
+void mannualTest(PARTICIPANT* participants, int num, int* numbers)					//Same like my Mannual Function but it will not ask for user input
+{
+for (int i = 0; i < num; i++) {
+		int number = numbers[i];
+
+		if (number <= 0) {
+			printf("Error: Invalid number entered.\n");
+			continue;
+		}
+
+		int number_used = 0;
+		int name_used = 0;
+		for (int j = 0; j < num; j++) {
+			if (j == i) continue;
+			if (participants[j].id == number) {
+				number_used = 1;
+				break;
+			}
+			if (strcmp(participants[j].name, participants[i].name) == 0) {
+				name_used = 1;
+				break;
+			}
+		}
+		if (number_used) {
+			printf("Error: Number already used.\n");
+		}
+		else if (name_used) {
+			printf("Error: Name already used.\n");
+		}
+		else {
+			participants[i].id = number;
+		}
+	}
 }

@@ -5,5 +5,4 @@
 typedef struct participant {
 	char name[MAXNAMESIZE];
 	int id;
-	int group_id;
 }PARTICIPANT;
