@@ -14,14 +14,12 @@
 void printParticipants(PARTICIPANT* participants, int num)						// Display Tournament
 {
 	printf("List of Participants:\n");
-	printf("-----------------------------------\n");
+	printf("----------------\n");
 	for (int i = 0; i < num; i++) {
 		printf("ID: %d, Name: %s\n", participants[i].id, participants[i].name);
 	}
-	printf("-----------------------------------\n");
+	printf("----------------\n");
 }
-
-
 
 void OrganizeMenu(PARTICIPANT* participants, int num)										//Tournament Organization Menu
 {
@@ -49,8 +47,6 @@ void OrganizeMenu(PARTICIPANT* participants, int num)										//Tournament Orga
 	printParticipants(participants, num);
 }
 
-
-
 void random(PARTICIPANT * participants, int num)										//Random Function
 {
 	srand(time(NULL));																	//Use Random number generator
@@ -59,10 +55,6 @@ void random(PARTICIPANT * participants, int num)										//Random Function
 		participants[i].id = rand() % (num * 10) + 1;									//Use number from 1-10
 	}
 }
-
-
-
-
 
 void mannual(PARTICIPANT* participants, int num) {
 	for (int i = 0; i < num; i++) {

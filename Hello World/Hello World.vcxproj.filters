@@ -27,6 +27,18 @@
     <ClCompile Include="nameInput.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Display.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileIO.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GenericInput.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="organize.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="numInput.h">
@@ -36,6 +48,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="participant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Display.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileIO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GenericInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="organize.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

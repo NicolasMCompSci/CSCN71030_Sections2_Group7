@@ -12,9 +12,10 @@
 int main(int argc, char* argv[]) {
 
 	PARTICIPANT* tournament = NULL;
+	int tempInt = 0;
 	int tournamentSize = 0;
-	if (argc > 2)
-		if (!Load(tournament, &tournamentSize, argv[0]))
+	if (argc >= 2)
+		if (!Load(&tournament, &tournamentSize, argv[1]))
 			printf("Failed to load file from command line.\n");
 		else
 			printf("File loaded from command line argument.\n");
@@ -23,9 +24,10 @@ int main(int argc, char* argv[]) {
 	while(continueProgram) {
 
 		// Displays option menu to user
-		DisplayMenu(8, "\nWhat do you want to do?\n",
+		DisplayMenu(8, "\n-----------------------------"
+						"\nWhat do you want to do ? \n",
 						"1. New Tournament",
-						"2. Edit current Tournament",
+						"2. Adjust tournament seeding",
 						"3. Display compact bracket",
 						"4. Display graph form bracket",
 						"5. Save",
@@ -34,6 +36,7 @@ int main(int argc, char* argv[]) {
 
 		// get menu input and initialize filename string
 		int menuInput = getWholeNumAsInt();
+		printf("\n");
 		char* fileName = NULL;
 		// menu logic
 		switch (menuInput) {
@@ -43,7 +46,15 @@ int main(int argc, char* argv[]) {
 			// --------------
 			
 			// get new tournament size
-			tournamentSize = sizeOfTournament();
+			tempInt = integerInput();
+			if ((tempInt != 0) && ((tempInt & (tempInt - 1)) == 0)) {
+				tournamentSize = tempInt;
+			}
+			else {
+				printf("\nThe tournament size that you entered is invalid would you like to switch to the closest (but higher) value (yes or no) \n");
+				bool choice = willNumChange();
+				tournamentSize - sizeOfTournament(tempInt, choice);
+			}
 			// if already allocated, clear allocation for new tournament
 			if (tournament)
 				free(tournament);
@@ -111,7 +122,7 @@ int main(int argc, char* argv[]) {
 			strcpy(fileName, getString());
 			// loads tournament and tournament size from file
 			// also prints error message on allocation error or not finding file
-			if (!Load(tournament, &tournamentSize, fileName))
+			if (!Load(&tournament, &tournamentSize, fileName))
 				printf("An error occurred. Try again.\n");
 			else
 				printf("Your file has been loaded successfully.\n");

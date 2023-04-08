@@ -13,6 +13,6 @@
 // saves participant array file
 bool Save(PARTICIPANT*, int, char[]);
 // loads participant array save file
-bool Load(PARTICIPANT*, int*, char[]);
+bool Load(PARTICIPANT**, int*, char[]);
 // checks if filename is valid
 bool IsValidFileName(char[]);
