@@ -10,6 +10,7 @@
 #include "GenericInput.h"
 
 
+
 void printParticipants(PARTICIPANT* participants, int num)						// Display Tournament
 {
 	printf("List of Participants:\n");
@@ -19,7 +20,6 @@ void printParticipants(PARTICIPANT* participants, int num)						// Display Tourn
 	}
 	printf("----------------\n");
 }
-
 
 void OrganizeMenu(PARTICIPANT* participants, int num)										//Tournament Organization Menu
 {
@@ -47,18 +47,6 @@ void OrganizeMenu(PARTICIPANT* participants, int num)										//Tournament Orga
 	printParticipants(participants, num);
 }
 
-// archived, since it is no longer used.
-//void assign(PARTICIPANT* participants, int num)											//Assign to different group
-//{
-//	for (int i = 0; i < num; i++) {														// Calculate the number on the name
-//		int num = 0;
-//		for (int j = 0; j < strlen(participants[i].name); j++) {
-//			num += participants[i].name[j];
-//		}
-//		participants[i].group_id = num % 4 + 1;											// Move it to group
-//	}
-//}	
-
 void random(PARTICIPANT * participants, int num)										//Random Function
 {
 	srand(time(NULL));																	//Use Random number generator
@@ -68,26 +56,76 @@ void random(PARTICIPANT * participants, int num)										//Random Function
 	}
 }
 
-void mannual(PARTICIPANT * participants, int num)										//Mannual Function
-{
-	int id;
-
+void mannual(PARTICIPANT* participants, int num) {
 	for (int i = 0; i < num; i++) {
-		printf("\nEnter Number for name %s: ", participants[i].name);					//Ask number for a name
-		if (scanf("%d", &id) != 1) {
-			printf("\nInvalid entry, try again");										//if Wrong number 
+		printf("Enter number for participant %s: ", participants[i].name);
+		int number;
+		scanf("%d", &number);
+
+		if (number <= 0) {
+			printf("Error: Invalid number entered.\n");
 			i--;
 			continue;
 		}
-		for (int j = 0; j < i; j++) {													//If this number already assigned for a name
-			if (participants[j].id == id) {
-				printf("\nNumber already assigned to another name, try again");
-				i--;
-				continue;
+
+		int number_used = 0;
+		int name_used = 0;
+		for (int j = 0; j < num; j++) {
+			if (j == i) continue;
+			if (participants[j].id == number) {
+				number_used = 1;
+				break;
+			}
+			if (strcmp(participants[j].name, participants[i].name) == 0) {
+				name_used = 1;
+				break;
 			}
 		}
-		participants[i].id = id;
+		if (number_used) {
+			printf("Error: Number already used.\n");
+			i--;
+		}
+		else if (name_used) {
+			printf("Error: Name already used.\n");
+			i--;
+		}
+		else {
+			participants[i].id = number;
+		}
 	}
-
 }
 
+void mannualTest(PARTICIPANT* participants, int num, int* numbers)					//Same like my Mannual Function but it will not ask for user input
+{
+for (int i = 0; i < num; i++) {
+		int number = numbers[i];
+
+		if (number <= 0) {
+			printf("Error: Invalid number entered.\n");
+			continue;
+		}
+
+		int number_used = 0;
+		int name_used = 0;
+		for (int j = 0; j < num; j++) {
+			if (j == i) continue;
+			if (participants[j].id == number) {
+				number_used = 1;
+				break;
+			}
+			if (strcmp(participants[j].name, participants[i].name) == 0) {
+				name_used = 1;
+				break;
+			}
+		}
+		if (number_used) {
+			printf("Error: Number already used.\n");
+		}
+		else if (name_used) {
+			printf("Error: Name already used.\n");
+		}
+		else {
+			participants[i].id = number;
+		}
+	}
+}
